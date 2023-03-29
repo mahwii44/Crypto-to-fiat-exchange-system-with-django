@@ -9,9 +9,9 @@
         {% csrf_token %}
         <label for="crypto">Select a cryptocurrency:</label>
         <select name="crypto" id="crypto">
-            {% for crypto in cryptocurrencies %}
+            <!--  -->
                 <option value="{{ crypto.symbol }}">{{ crypto.name }}</option>
-            {% endfor %}
+            <!-- -->
         </select>
         <br><br>
         <label for="amount">Enter the amount:</label>
