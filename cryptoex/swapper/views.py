@@ -1,17 +1,17 @@
 from django.shortcuts import render
-from .models import ConversionRate
+##from .models import ConversionRate
 from .models import CryptoCurrency
 # Create your views here.
 
-def index(request):
-    conversion_rate = ConversionRate.objects.get(from_currency='BTC', to_currency='USD')
-    btc_amount = float(request.GET.get('btc_amount'))
-    usd_amount = btc_amount * conversion_rate.rate
+#def index(request):
+ #   conversion_rate = ConversionRate.objects.get(from_currency='BTC', to_currency='USD')
+  #  btc_amount = float(request.GET.get('btc_amount'))
+  #  usd_amount = btc_amount * conversion_rate.rate
     
-    return render(request, 'index.html', {'amount':usd_amount})
+  #  return render(request, 'index.html', {'amount':usd_amount})
 
 
-def crypto_converter(request):
+def index(request):
     # Get all available cryptocurrencies from the database
     cryptocurrencies = CryptoCurrency.objects.all()
 
@@ -33,4 +33,4 @@ def crypto_converter(request):
             'cryptocurrencies': cryptocurrencies,
         }
 
-    return render(request, 'crypto_converter.html', context)
+    return render(request, 'index.html', context)
