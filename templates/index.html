@@ -1,20 +1,26 @@
-<div class="wrapper">
-    <h1>Cryptocurrency Converter</h1>
-   
-    <form>
-        <select name="currencyFrom" id="currencyFrom">
-            <option value="">-- Select a currency --</option>
-            <option value="BTC">BTC</option>
-            <option value="ETH">ETH</option>
-            <option value="USDT">USDT</option>
-            <option value="BNB">BNB</option>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crypto Converter</title>
+</head>
+<body>
+    <h1>Crypto Converter</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="crypto">Select a cryptocurrency:</label>
+        <select name="crypto" id="crypto">
+            {% for crypto in cryptocurrencies %}
+                <option value="{{ crypto.symbol }}">{{ crypto.name }}</option>
+            {% endfor %}
         </select>
-        <input type="number" name="amountFrom" id="amountFrom">
-        <select name="currencyTo" id="currencyTo">
-            <option value="">-- Select a currency --</option>
-            <option value="NGN">NGN</option>
-        </select>
+        <br><br>
+        <label for="amount">Enter the amount:</label>
+        <input type="text" name="amount" id="amount">
+        <br><br>
+        <input type="submit" value="Convert">
     </form>
-
-    <p id="result">Select some currencies and an amount to convert</p>
-</div>
+    {% if selected_crypto and amount %}
+        <h2>{{ amount }} {{ selected_crypto }} = {{ converted_amount }} USD</h2>
+    {% endif %}
+</body>
+</html>
