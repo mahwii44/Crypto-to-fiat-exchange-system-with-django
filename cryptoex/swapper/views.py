@@ -45,7 +45,7 @@ def get_crypto_data():
     'X-CMC_PRO_API_KEY': 'your_api_key_here'
 }
     parameters = {
-    'symbol': 'BTC',
+    'symbol': 'BTC','ETH','USDT'
     'convert': 'USD'
 }
 
